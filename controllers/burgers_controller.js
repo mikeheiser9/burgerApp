@@ -1,12 +1,12 @@
 var express = require("express");
 var router = express.Router();
 
-// Import the model (cat.js) to use its database functions.
-var burger = require("../models/cat.js");
+// Import the model (burgers.js) to use its database functions.
+var burger = require("../models/burgers.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  burger.all(function(data) {
+  burger.selectAll(function(data) {
     var hbsObject = {
       burgers: data
     };
@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  burger.create([
+  burger.insertOne([
     "name", "eaten"
   ], [
     req.body.burger_name, req.body.eaten
@@ -26,13 +26,13 @@ router.post("/api/burgers", function(req, res) {
   });
 });
 
-router.put("/api/cats/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
-  cat.update({
-    sleepy: req.body.sleepy
+  burger.updateOne({
+    eaten: req.body.eaten
   }, condition, function(result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
