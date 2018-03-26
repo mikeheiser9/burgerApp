@@ -23,13 +23,19 @@ function objToSql(ob) {
 }
 
 var orm = {
-    selectAll: function (tableInput, colToSearch, valOfCol) {
-        var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-        connection.query(queryString, [tableInput, colToSearch, valOfCol], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-        });
-    },
+    selectAll: function(tableInput, cb) {
+		// Construct the query string that returns all rows from the target table
+		var queryString = "SELECT * FROM " + tableInput + ";";
+
+		// Perform the database query
+		connection.query(queryString, function(err, result) {
+			if (err) {
+				throw err;
+			}
+			// Return results in callback
+			cb(result);
+		});
+	},
     insertOne: function (table, cols, vals, cb) {
         // Construct the query string that inserts a single row into the target table
         var queryString = "INSERT INTO " + table;

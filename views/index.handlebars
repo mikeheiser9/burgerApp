@@ -1,4 +1,55 @@
-<h1>Eat the Burger!</h1>
+<h1>EAT-DA-BURGER!</h1>
+<h2>Select a pre-made burger or create your own custom burget in the field below!</h2>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        {{#each burgers}}
+          {{#unless this.eaten}}
+            <div>
+              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class="burgerButton"> {{this.burger_name}}</button>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+
+      <div class="col s6">
+        {{#each burgers}}
+          {{#if this.eaten}}
+            <div class='burgerEaten'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>
+
+<h2>Add Your Custom Burger!</h2>
+
+<div class="row">
+  <div class="col s12">
+    <form action="/burgers" method="POST">
+      <input type="text" id="name" name="burger_name" placeholder="Enter Custom Burger">
+      <button type="submit" class="addBurgerButton">Order Custom Burger!</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+{{!-- <h1>Eat the Burger!</h1>
 <h3>Eat off our pre-made menu or order your custom burger in the input field below!</h3>
 
 <h2>Order Custom Burger!</h2>
@@ -15,7 +66,7 @@
 
   
 
-{{!-- <script>   
+<script>   
 $("#custom-burger").hide();
 
 var addBurger = $("order-burger").click(function() {

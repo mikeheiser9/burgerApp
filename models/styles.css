@@ -1,0 +1,25 @@
+* {
+    background-color: lemonchiffon;
+    font-family: 'Catamaran', sans-serif;
+}
+
+h1 {
+    font-family: 'Acme', sans-serif;
+    margin-bottom: 20px;
+}
+
+#custom-burger {
+    padding: 15px;
+    background-color: maroon;
+    color: lemonchiffon;
+};
+
+#eat-burger {
+    background-color: limegreen;
+    color: darkslategrey;
+};
+
+#order-burger {
+    background-color: limegreen;
+    color: darkslategrey;
+};
