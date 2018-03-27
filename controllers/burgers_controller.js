@@ -15,33 +15,26 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/api/burgers", function(req, res) {
-  burger.insertOne([
-    "burger_name", "eaten"
-  ], [
-    req.body.burger_name, req.body.eaten
-  ], function(result) {
-    // Send back the ID of the new quote
-    res.json({id: result.insertId});
+router.post('/burgers', function(req, res) {
+    burger.insertOne([
+      'burger_name'
+    ], [
+      req.body.burger_name
+    ], function(result) {
+      res.redirect('/');
+    });
   });
-});
-
-router.put("/api/burgers/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-
-  console.log("condition", condition);
-
-  burger.updateOne({
-    eaten: req.body.eaten
-  }, condition, function(result) {
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
+  
+  router.put('/api/burgers/:id', function(req, res) {
+    var condition = 'id = ' + req.params.id;
+  
+    burger.updateOne({
+      eaten: true
+    }, condition, function(result) {
+        console.log(result);
+      res.end();
+    });
   });
-});
 
 // Export routes for server.js to use.
 module.exports = router;
