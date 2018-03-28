@@ -1,4 +1,4 @@
-<h1>EAT-DA-BURGER!</h1>
+<h1 id= "header">EAT-DA-BURGER!</h1>
 <h2>Select a pre-made burger or create your own custom burget in the field below!</h2>
 <main>
   <div class="container">
@@ -27,16 +27,19 @@
   </div>
 </main>
 
+<center>
 <h2>Add Your Custom Burger!</h2>
-
 <div class="row">
   <div class="col s12">
+    <center>
     <form action="/burgers" method="POST">
       <input type="text" id="name" name="burger_name" placeholder="Enter Custom Burger">
       <button type="submit" class="addBurgerButton">Order Custom Burger!</button>
     </form>
+    </center>
   </div>
 </div>
+</center>
 
 
 <script>
@@ -65,3 +68,30 @@
   });
 
 </script>
+
+<style>
+  body {
+    background-image: url("/burger.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #cccccc;
+    font-family: 'Catamaran', sans-serif;
+};
+
+h1 #header {
+    font-family: 'Fascinate Inline', cursive;
+    margin-bottom: 20px;
+};
+
+button {
+  background-color: #F5CB5C;
+  color: #333533;
+}
+
+#burgerSpan {
+  font-size: 20px;
+  background-color: #F5CB5C;
+  color: #333533;
+}
+
+</style>
